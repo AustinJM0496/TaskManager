@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p class="form-element" >
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
 
-<p>
+<p class="form-element" >
   <strong>Description:</strong>
   <%= @task.description %>
 </p>
 
-<p>
+<p class="form-element" >
   <strong>Category:</strong>
   <%= @task.category %>
 </p>
 
-<p>
+<p class="form-element" >
   <strong>Due Date:</strong>
   <%= @task.duedate %>
 </p>
 
-<p>
+<p class="form-element" >
   <strong>Completed:</strong>
   <%= check_box_tag "task_completed", 1, @task.completed, disabled: true %>
 </p>
@@ -28,4 +28,5 @@
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
 
-<%= button_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= button_to 'Delete Task', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>
+
