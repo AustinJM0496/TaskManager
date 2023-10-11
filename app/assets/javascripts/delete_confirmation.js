@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   deleteButtons.forEach(button => {
     button.addEventListener("click", function(event) {
-      const confirmation = confirm("Are you sure you want to delete this item?");
+      const confirmation = confirm("Are you sure you want to delete this task?");
       if (!confirmation) {
         event.preventDefault(); // Cancel the default action if confirmation is not received
       }
