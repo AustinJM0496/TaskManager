@@ -8,7 +8,9 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     #Deletes the tasks when the completed checkbox is checked
-
+    
+    @tasks = Task.order('created_at DESC')
+    #@tasks = Task.find(:all, :order => "date")
   end
 
   # GET /tasks/1

@@ -1,0 +1,60 @@
+
+/* app/assets/stylesheets/datatables.css */
+
+/* Set the default font and styling */
+table.dataTable {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.dataTable thead th,
+table.dataTable tfoot th,
+table.dataTable thead td,
+table.dataTable tfoot td {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+table.dataTable thead th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Add some spacing to the table header */
+table.dataTable thead th {
+  padding: 12px;
+}
+
+/* Add hover effect to table rows */
+table.dataTable tbody tr:hover {
+  background-color: #f6f6f6;
+}
+
+/* Style the pagination buttons */
+div.dataTables_paginate ul.pagination {
+  list-style-type: none;
+}
+
+div.dataTables_paginate ul.pagination li {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+div.dataTables_paginate ul.pagination li a {
+  padding: 4px 8px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+div.dataTables_paginate ul.pagination li a:hover {
+  background-color: #0056b3;
+}
+
+/* Apply additional styles as needed */
+

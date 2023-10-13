@@ -1,44 +1,59 @@
-<!-- app/views/tasks/index.html.erb -->
+<br>
 
-<p id="notice"><%= notice %></p>
+<style>
+  #notice {
+    text-align: center;
+    color: green; /* Change the color to red */
+  }
+</style>
+
+<div id="notice"><%= notice %></div>
+
+<br>
+<br>
 
 <div class="header-content">
   <h1>Tasks</h1>
   <%= link_to 'New Task', new_task_path %>
 </div>
 
-<table>
+<%= submit_tag 'Filter by due date', class: 'btn search-button'%>
+
+<table id="tasks-table" class="display">
   <thead>
     <tr>
-      <th>Date</th>
+      <th>Date Added</th>
       <th>Task Name</th>
       <th>Task Description</th>
       <th>Task Category</th>
       <th>Task Due Date</th>
       <th>Task Completed</th>
       <th>Controls</th>
-      <!-- Remove the colspan="3" attribute from here -->
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr class="<%= task.category.parameterize %>">
-        <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
-        <td class="<%= 'completed-task' if task.completed %>"><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.category %></td>
-        <td><%= task.duedate.strftime("%Y-%m-%d") %></td>
-        <td><%= check_box_tag "task_completed", 1, task.completed, disabled: true %></td>
-        <td>
+      <tr>
+        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.created_at.strftime("%B %d %Y") %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.name %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.description %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.category %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.duedate.strftime("%B %d %Y") %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>"> <%= check_box_tag "task_completed", 1, task.completed, disabled: true %></td>
+        <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>">
           <%= link_to 'Show', task %>
           <%= link_to 'Edit', edit_task_path(task) %>
-          <%= button_to '   Delete   ', task, method: :delete, class: 'delete-button' %>
+          <%= button_to 'Delete', task, method: :delete, class: 'delete-button' %>
         </td>
       </tr>
     <% end %>
   </tbody>
-  <!-- Remove the div with class "header-content" from here -->
 </table>
 
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#tasks-table').DataTable();
+  });
+</script>

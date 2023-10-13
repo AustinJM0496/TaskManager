@@ -5,6 +5,8 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

@@ -7,7 +7,7 @@ body, h1, h2, h3, p, ul, li {
 /* Style the body and background */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f6f8fa;
+  background-color: #FFFFFF;
 }
 
 /* Style the header */
@@ -49,6 +49,10 @@ body {
   margin-bottom: 20px;
 }
 
+.form-show-element {
+  margin-bottom: 20px;
+}
+
 /* Style the table */
 table {
   width: 100%;
@@ -66,12 +70,9 @@ table, th, td {
 th, td {
   padding: 12px;
   text-align: left;
+  text-align: center;
 }
 
-th {
-  background-color: #007bff;
-  color: #fff;
-}
 
 /* Style the buttons */
 .btn {
@@ -195,19 +196,56 @@ div.form-group input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+.status {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Style the completed task (with line-through) */
 .completed-task {
-  background-color: #c0e7a0; /* Set your desired background color */
+  background-color: #808080 !important; /* Set your desired background color */
+  font-style: italic;
+  color: #666; /* Set your desired text color */
+  text-decoration: line-through; /* Add line-through effect */
+}
+
+.completed-task-settings {
+  background-color: #808080 !important; /* Set your desired background color */
   font-style: italic;
   color: #666; /* Set your desired text color */
 }
 
 .personal {
-  background-color: #FFFFED !important;
+  background-color: #A3BAA7;
 }
 
 .work {
-  background-color: #ccffcc !important;
+  background-color: #FFFFED;
 }
+
+/* Index File CSS */
+
+thead {
+  text-align: center;
+}
+
+thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #175b8f; /* Header background color */
+  color: #FFFFFF; /* Header text color */
+  font-weight: bold; /* Header text font weight */
+  padding: 25px; /* Header cell padding */
+}
+
+
+.flash-notice {
+  text-align: center;
+}
+
 
 /* New Tasks CSS */
 
@@ -250,10 +288,21 @@ div.form-group input[type="submit"]:hover {
   text-align: left; /* Adjust text alignment as needed */
 }
 
+/* Show Buttons CSS */
+
+.centered-buttons {
+  text-align: center;
+  margin-top: 20px; /* You can adjust the margin as needed */
+}
+
+.centered-button {
+  margin: 5px; /* You can adjust the margin as needed */
+}
+
 /* CSS Submit Buttons */
 
 .custom-button {
-  background-color: #4E6EA4;
+  background-color: #414385;
   color: #fff;
   border: 1px solid #eee;
   border-radius: 20px;
@@ -268,13 +317,45 @@ div.form-group input[type="submit"]:hover {
 }
 
 .custom-button:hover {
-  background: #016ABC;
+  background: #38396a;
   color: #fff;
   border: 1px solid #eee;
   border-radius: 20px;
   box-shadow: 5px 5px 5px #eee;
   text-shadow: none;
+
 }
+
+.custom-button2 {
+  background-color: #ba4343;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.custom-button2:hover {
+  background-color: #a72b34;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
 
 /* Editing Buttons CSS */
 

@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<br>
+<table>
+  <tr>
+    <th>Name:</th>
+    <th>Description:</th>
+    <th>Category:</th>
+    <th>Due Date:</th>
+    <th>Completed:</th>
+  </tr>
+  <tr>
+    <td><%= @task.name %></td>
+    <td><%= @task.description %></td>
+    <td><%= @task.category %></td>
+    <td><%= @task.duedate %></td>
+    <td><%= check_box_tag "task_completed", 1, @task.completed, disabled: true %></td>
+  </tr>
+</table>
 
-<p class="form-element" >
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+<div class="centered-buttons">
+<%= link_to 'Edit this task', edit_task_path(@task) %> |
+<%= link_to 'Back to tasks', tasks_path %>
 
-<p class="form-element" >
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+<%= button_to 'Delete Task', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'custom-button2' %>
 
-<p class="form-element" >
-  <strong>Category:</strong>
-  <%= @task.category %>
-</p>
+</div>
 
-<p class="form-element" >
-  <strong>Due Date:</strong>
-  <%= @task.duedate %>
-</p>
 
-<p class="form-element" >
-  <strong>Completed:</strong>
-  <%= check_box_tag "task_completed", 1, @task.completed, disabled: true %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
-
-<%= button_to 'Delete Task', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>
