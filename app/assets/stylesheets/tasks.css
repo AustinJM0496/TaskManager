@@ -111,11 +111,6 @@ th {
   }
 }
 
-.form-element {
-  margin-top: 30px;
-  margin-bottom: 20px; /* Adjust as needed */
-}
-
 /* Style error messages in red */
 div#error-messages {
   color: red;
@@ -212,4 +207,82 @@ div.form-group input[type="submit"]:hover {
 
 .work {
   background-color: #ccffcc !important;
+}
+
+/* New Tasks CSS */
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* This ensures the content is centered in the viewport. */
+}
+
+.form-container {
+  margin: 20px 0; /* Adjust the margin as needed */
+  background: hsl(218deg 50% 91%);
+  padding: 4em;
+
+}
+
+.back-link {
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+
+/* Show Tasks CSS */
+
+.centered-content2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center; /* Center text horizontally if needed */
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content next to the header */
+  text-align: left; /* Adjust text alignment as needed */
+}
+
+/* CSS Submit Buttons */
+
+.custom-button {
+  background-color: #4E6EA4;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.custom-button:hover {
+  background: #016ABC;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow: none;
+}
+
+/* Editing Buttons CSS */
+
+.action-buttons {
+  text-align: center; /* Optional: Center the links horizontally */
+}
+
+.button {
+  display: inline-block;
+  margin: 5px; /* Add spacing between the links */
 }

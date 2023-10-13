@@ -7,6 +7,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    #Deletes the tasks when the completed checkbox is checked
+
   end
 
   # GET /tasks/1
@@ -75,5 +77,8 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :description, :category, :duedate, :completed)
   end
+
+
+
 
 end

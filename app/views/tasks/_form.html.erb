@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div>
+  <div style="margin-bottom: 25px;">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
@@ -20,23 +20,23 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
-
+<br>
   <div>
     <%= form.label :category, style: "display: block" %>
     <%= form.select :category, [['Personal', 'personal'], ['Work', 'work']] %>
   </div>
-
+<br>
   <div>
     <%= form.label :duedate, style: "display: block" %>
     <%= form.date_field :duedate, value: Date.current %>
   </div>
-
-  <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.check_box :completed %>
+<br>
+  <div style="margin-top: 15px;">
+  <%= form.label :completed, style: "display: inline-block; margin-right: 10px; vertical-align: middle; " %>
+  <%= form.check_box :completed, style: "vertical-align: middle;" %>
   </div>
-
+<br>
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "custom-button" %>
   </div>
 <% end %>

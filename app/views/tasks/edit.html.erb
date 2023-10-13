@@ -1,6 +1,12 @@
-<h1>Editing Task</h1>
+<div class="centered-content">
+  <h1>Editing Task</h1>
 
-<%= render 'form', task: @task %>
-
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+  <div class="form-container">
+    <%= render 'form', task: @task %>
+  </div>
+  
+  <div class="action-buttons">
+    <%= link_to 'Show Task', @task, class: 'button' %> 
+    <%= link_to 'Back to Tasks', tasks_path, class: 'button' %>
+  </div>
+</div>
