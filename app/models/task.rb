@@ -10,14 +10,6 @@ class Task < ApplicationRecord
   validates :duedate, presence: true
   validate :duedatepast
   
-  FILTER_PARAMS = %i[name column direction].freeze
-  
-  scope :by_name, ->(query) { where('duedate.name ilike ?', "%#{query}%") }
-    
-  def self.filter(filters)
-    Duedate.order("#{filters['column']} #{filters['direction']}")
-  end
-    
   def duedatepast
     if duedate.present? && duedate < Date.today
       errors.add(:duedate, "can't be in the past") 

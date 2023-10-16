@@ -1,33 +1,45 @@
+<html>
+  
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+</head>
+
+<br>
 <br>
 
-<style>
-  #notice {
-    text-align: center;
-    color: green; /* Change the color to red */
-  }
-</style>
+<body>
 
 <div id="notice"><%= notice %></div>
 
 <br>
-<br>
 
 <div class="header-content">
   <h1>Tasks</h1>
-  <%= link_to 'New Task', new_task_path %>
+  <%= link_to 'Create New Task', new_task_path %>
 </div>
 
-<%= submit_tag 'Filter by due date', class: 'btn search-button'%>
+
+
+<div class = "pull-right range-query">
+  <%= form_tag tasks_path, method: :get do %>
+    <%=text_field_tag 'search[date_from]' , @search.date_from %>
+    <%=text_field_tag 'search[date_to]' , @search.date_to %>
+    <%= submit_tag 'Search', class: 'btn search-button'%>
+  <%end%>
+</div>
+
+
 
 <table id="tasks-table" class="display">
   <thead>
     <tr>
-      <th>Date Added</th>
-      <th>Task Name</th>
+      <th class="sortable">Date Added</th>
+      <th class="sortable">Task Name</th>
       <th>Task Description</th>
-      <th>Task Category</th>
-      <th>Task Due Date</th>
-      <th>Task Completed</th>
+      <th class="sortable">Task Category</th>
+      <th class="sortable">Task Due Date</th>
+      <th class="sortable">Task Completed</th>
       <th>Controls</th>
     </tr>
   </thead>
@@ -35,7 +47,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.created_at.strftime("%B %d %Y") %></td>
+       <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.created_at.in_time_zone('Hawaii').strftime("%B %d %Y") %></td>
         <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.name %></td>
         <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.description %></td>
         <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.category %></td>
@@ -44,6 +56,7 @@
         <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>">
           <%= link_to 'Show', task %>
           <%= link_to 'Edit', edit_task_path(task) %>
+          <br>
           <%= button_to 'Delete', task, method: :delete, class: 'delete-button' %>
         </td>
       </tr>
@@ -51,9 +64,21 @@
   </tbody>
 </table>
 
-
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#tasks-table').DataTable();
+    $('#tasks-table').DataTable({
+      "order": [], // Initialize with no default sorting
+
+      // Define sorting options for specific columns
+      "columnDefs": [
+        {
+          "targets": 'sortable', // Add the "sortable" class to the th elements you want to make sortable
+          "orderable": true, // Enable sorting for these columns
+        },
+      ],
+    });
   });
 </script>
+</body>
+</html>
+

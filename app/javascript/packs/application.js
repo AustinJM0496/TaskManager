@@ -5,7 +5,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
 
 
 import Rails from "@rails/ujs"
@@ -16,3 +15,25 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tasksContainer = document.getElementById("tasks-container");
+  const completedTasksTable = document.getElementById("completed-tasks");
+
+  const tasks = Array.from(tasksContainer.querySelectorAll("tr"));
+
+  tasks.forEach((taskRow) => {
+    const isCompleted = taskRow.classList.contains("completed-task");
+
+    if (isCompleted) {
+      completedTasksTable.querySelector("tbody").appendChild(taskRow);
+    }
+  });
+});
+
+// application.js
+(document).ready(function() {
+  ('#tasks-table').DataTable();
+});
+

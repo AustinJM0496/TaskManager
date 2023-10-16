@@ -7,12 +7,27 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    #Deletes the tasks when the completed checkbox is checked
+  #-----------------------------------------------------------------------------  
+    # Use the sort_column and sort_direction methods to set the sorting parameters
+    #@sort_column = sort_column
+    #@sort_direction = sort_direction
+    #@products = Product.order("#{@sort_column} #{@sort_direction}")
+  #----------------------------------------------------------------------------- 
+  
+    @search = DuedateSearch.new(params[:search])
+    @duedate = @search.scope
+    #query by due date ^
     
-    @tasks = Task.order('created_at DESC')
-    #@tasks = Task.find(:all, :order => "date")
   end
-
+#-------------------------------------------------------------------------------
+  #def order_column
+  #  Product.column_names.include?(params[:sort_column]) ? params[:sort_column] : "name"
+  #end
+  
+  #def sort_direction
+  #  %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction] : "asc"
+  #end
+#-------------------------------------------------------------------------------
   # GET /tasks/1
   # GET /tasks/1.json
   def show
