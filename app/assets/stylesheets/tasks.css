@@ -204,17 +204,23 @@ div.form-group input[type="submit"]:hover {
 
 /* Style the completed task (with line-through) */
 .completed-task {
-  background-color: #c6ced5 !important; /* Set your desired background color */
+  background-color: #c6ced5 !important; 
   font-style: italic;
-  color: #666; /* Set your desired text color */
-  text-decoration: line-through; /* Add line-through effect */
+  color: #666; 
+  position: relative; 
 }
 
-.completed-task-settings {
-  background-color: #c6ced5 !important; /* Set your desired background color */
-  font-style: italic;
-  color: #666; /* Set your desired text color */
+.completed-task::before {
+  content: "";
+  display: block;
+  border-top: 3px solid #000000; 
+  position: absolute;
+  top: 50%; 
+  left: 0; 
+  width: 100%; 
+  transform: translateY(-1px); 
 }
+
 
 .personal {
   background-color: #A3BAA7;
@@ -391,3 +397,52 @@ th {
     text-align: center;
     color: green; /* Change the color to red */
  }
+ 
+ .green-task-button {
+  background-color: #4CAF50; 
+  color: white; 
+  padding: 10px 20px; 
+  text-decoration: none; 
+  display: inline-block; 
+  border-radius: 5px; 
+}
+
+/* Hover effect for the delete button */
+.green-task-button:hover {
+  background-color: #57d757;
+}
+
+
+.blue-show-button, .blue-edit-button {
+  background-color: #3498db; 
+  color: white; 
+  padding: 5px 10px; 
+  text-decoration: none; 
+  border-radius: 5px; 
+  margin-right: 10px; 
+}
+.blue-edit-button:hover {
+  background-color: #5aa6e4; 
+}
+
+.blue-show-button:hover {
+  background-color: #5aa6e4; 
+}
+
+.heading {
+  font-family: 'Roboto', cursive;
+  font-size: 2rem;
+  opacity: 0; 
+  animation: text-animation 2s ease-in-out forwards; 
+}
+
+@keyframes text-animation {
+  0% {
+    opacity: 0;
+    transform: scale(1); 
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

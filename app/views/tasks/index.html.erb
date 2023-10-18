@@ -10,13 +10,14 @@
 
 <body>
 
+
 <div id="notice"><%= notice %></div>
 
 <br>
 
 <div class="header-content">
-  <h1>Tasks</h1>
-  <%= link_to 'Create New Task', new_task_path %>
+ <h1 class="heading">TASK MANAGER</h1>
+  <%= link_to 'Create New Task', new_task_path, class: 'green-task-button' %>
 </div>
 
 
@@ -44,24 +45,26 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-       <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.created_at.in_time_zone('Hawaii').strftime("%B %d %Y") %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.name %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.description %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.category %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.duedate.strftime("%B %d %Y") %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>"> <%= check_box_tag "task_completed", 1, task.completed, disabled: true %></td>
-        <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>">
-          <%= link_to 'Show', task %>
-          <%= link_to 'Edit', edit_task_path(task) %>
-          <br>
-          <%= button_to 'Delete', task, method: :delete, class: 'delete-button' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+<tbody>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.created_at.in_time_zone('Hawaii').strftime("%B %d %Y") %></td>
+      <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.name %></td>
+      <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.description %></td>
+      <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.category %></td>
+      <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.duedate.strftime("%B %d %Y") %></td>
+      <td class="<%= task.category.parameterize%> <%='completed-task completed-task-settings' if task.completed %>">
+        <%= task.completed ? 'Task Completed' : '' %>
+      </td>
+      <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>">
+        <%= link_to 'SHOW', task, class: 'blue-show-button' %>
+        <%= link_to 'EDIT', edit_task_path(task), class: 'blue-edit-button' %>
+        <br>
+        <%= button_to 'Delete', task, method: :delete, class: 'delete-button' %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
 </table>
 
 <script type="text/javascript">
