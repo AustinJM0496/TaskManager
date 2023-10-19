@@ -13,10 +13,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const increaseButton = document.getElementById('increase-font-size');
+      const decreaseButton = document.getElementById('decrease-font-size');
+      const body = document.body;
+    
+      let currentFontSize = 16; // The initial font size (in pixels)
+    
+      increaseButton.addEventListener('click', function () {
+        currentFontSize += 2; // Increase font size by 2 pixels
+        body.style.fontSize = currentFontSize + 'px';
+      });
+    
+      decreaseButton.addEventListener('click', function () {
+        currentFontSize -= 2; // Decrease font size by 2 pixels
+        body.style.fontSize = currentFontSize + 'px';
+      });
+    });
+  </script>
+
 
   </head>
 
   <body>
+    <button id="increase-font-size">Increase Font Size</button>
+    <button id="decrease-font-size">Decrease Font Size</button>
     <%= yield %>
+    
+
   </body>
 </html>

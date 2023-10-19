@@ -10,7 +10,6 @@
 
 <body>
 
-
 <div id="notice"><%= notice %></div>
 
 <br>
@@ -22,6 +21,34 @@
 
 
 
+<br>
+<br>
+
+<div class="dataTables_filter">
+  <label for="name-filter">Name:</label>
+  <input type="text" id="name-filter">
+  <label for="description-filter">Description:</label>
+  <input type="text" id="description-filter">
+  
+  <label for="category-filter">Category:</label>
+  <select id="category-filter">
+    <option value="">All</option>
+    <option value="Personal">Personal</option>
+    <option value="Work">Work</option>
+  </select>
+  
+  <label for="completed-filter">Completed:</label>
+  <select id="completed-filter">
+    <option value="">All</option>
+    <option value="true">Completed</option>
+    <option value="false">Not Completed</option>
+  </select>
+</div>
+
+<br>
+<br>
+<br>
+
 <div class = "pull-right range-query">
   <%= form_tag tasks_path, method: :get do %>
     <%=text_field_tag 'search[date_from]' , @search.date_from %>
@@ -29,8 +56,6 @@
     <%= submit_tag 'Search', class: 'btn search-button'%>
   <%end%>
 </div>
-
-
 
 <table id="tasks-table" class="display">
   <thead>
@@ -54,13 +79,15 @@
       <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.category %></td>
       <td class="<%= task.category.parameterize%> <%='completed-task' if task.completed %>" ><%= task.duedate.strftime("%B %d %Y") %></td>
       <td class="<%= task.category.parameterize%> <%='completed-task completed-task-settings' if task.completed %>">
-        <%= task.completed ? 'Task Completed' : '' %>
+          <%= task.completed ? 'Task Completed' : 'Not Completed' %>
+      </td>
       </td>
       <td class="<%= task.category.parameterize%> <%='completed-task-settings' if task.completed %>">
         <%= link_to 'SHOW', task, class: 'blue-show-button' %>
         <%= link_to 'EDIT', edit_task_path(task), class: 'blue-edit-button' %>
         <br>
-        <%= button_to 'Delete', task, method: :delete, class: 'delete-button' %>
+        <%= button_to 'Delete', task, method: :delete, class: 'delete-button', onclick: 'confirmDelete(event)' %>
+
       </td>
     </tr>
   <% end %>
@@ -68,19 +95,55 @@
 </table>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#tasks-table').DataTable({
-      "order": [], // Initialize with no default sorting
+  function confirmDelete(event) {
+    if (confirm('Are you sure you want to delete this task?')) {
+      // If the user confirms, continue with the deletion action.
+      return true;
+    } else {
+      // If the user cancels, prevent the default action (deletion).
+      event.preventDefault();
+      return false;
+    }
+  }
 
-      // Define sorting options for specific columns
-      "columnDefs": [
-        {
-          "targets": 'sortable', // Add the "sortable" class to the th elements you want to make sortable
-          "orderable": true, // Enable sorting for these columns
-        },
-      ],
-    });
+  $(document).ready(function() {
+  var table = $('#tasks-table').DataTable({
+    "order": [], // Initialize with no default sorting
+
+    // Define sorting options for specific columns
+    "columnDefs": [
+      {
+        "targets": 'sortable', // Add the "sortable" class to the th elements you want to make sortable
+        "orderable": true, // Enable sorting for these columns
+      },
+    ]
   });
+
+  // Apply individual column filtering for each input
+  $('#name-filter').on('keyup', function() {
+    table.column(1).search(this.value).draw();
+  });
+  $('#description-filter').on('keyup', function() {
+    table.column(2).search(this.value).draw();
+  });
+  $('#category-filter').on('change', function() {
+      var value = this.value;
+      if (value === "") {
+        table.column(3).search("").draw();
+      } else {
+        table.column(3).search(value).draw();
+      }
+    });
+  $('#completed-filter').on('change', function() {
+    var value = this.value;
+    if (value === "") {
+      table.column(5).search("").draw();
+    } else {
+      table.column(5).search(value === "true" ? "Task Completed" : "Not Completed").draw();
+    }
+  });
+});
+
 </script>
 </body>
 </html>

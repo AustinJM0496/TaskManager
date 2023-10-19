@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
   const deleteButtons = document.querySelectorAll(".delete-button");
 
   deleteButtons.forEach(button => {
@@ -10,3 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+*/ 
+
+

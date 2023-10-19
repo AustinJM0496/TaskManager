@@ -13,6 +13,7 @@ body {
 
 /* Style the header */
 .header {
+  position: fixed;
   background-color: #007bff;
   color: #fff;
   padding: 20px;
@@ -170,6 +171,7 @@ div.form-group input[type="date"] {
   border-radius: 4px;
   font-size: 16px;
   color: #333; /* Dark text color */
+  position: fixed;
 }
 
 /* Style the completed checkbox */
@@ -213,7 +215,7 @@ div.form-group input[type="submit"]:hover {
 .completed-task::before {
   content: "";
   display: block;
-  border-top: 3px solid #000000; 
+  border-top: 1px solid #000000; 
   position: absolute;
   top: 50%; 
   left: 0; 
@@ -242,7 +244,7 @@ thead th {
 }
 
 th {
-  background-color: #175b8f; /* Header background color */
+  background-color: #003554; /* Header background color */
   color: #FFFFFF; /* Header text color */
   font-weight: bold !important; /* Header text font weight */
   padding: 25px !important; /* Header cell padding */
@@ -252,6 +254,54 @@ th {
 .flash-notice {
   text-align: center;
 }
+
+/* Style the filter label */
+
+.dataTables_filter  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center the text within the div */
+  
+}
+
+.dataTables_filter label {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* Style the text input elements */
+.dataTables_filter input[type="text"] {
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the select dropdown elements */
+.dataTables_filter select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+}
+
+
+
+#increase-font-size, #decrease-font-size {
+  background-color: #414385;
+  color: white;
+  padding: 10px 20px;
+  border-radius:15px;
+  border: none;
+  cursor: pointer;
+}
+
+#increase-font-size:hover, #decrease-font-size:hover {
+  background-color: #38396a;
+}
+
 
 
 /* New Tasks CSS */
@@ -267,13 +317,53 @@ th {
 .form-container {
   margin: 20px 0; /* Adjust the margin as needed */
   background: hsl(218deg 50% 91%);
-  padding: 4em;
+  padding: 5em;
+  width:20%;
+  border-radius:15px;
+  padding-right: 100px;
 
+}
+
+/* Apply styles to all text input fields */
+.form-container input[type="text"] {
+  width: 108%;
+  height: 40px; /* You can adjust the height as needed */
+  border-radius:15px;
+  border-color: black !important;
+  margin-top: 10px;
+  
+}
+
+
+textarea {
+  width:100%;
+  resize: vertical;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  height:120px;
+  border-color: black !important;
+  border: 5px;
+  margin-top: 10px;
+}
+
+/* Custom styles for the category label and select input */
+form label[for="task_category"], form select#task_category {
+  width: 100%;
+  padding: 5px;
+}
+
+/* Custom styles for the due date label and date input */
+form label[for="task_duedate"], form input#task_duedate {
+  width: 95%;
+  padding: 5px;
 }
 
 .back-link {
   margin-top: 10px; /* Adjust the margin as needed */
 }
+
+
 
 
 /* Show Tasks CSS */
@@ -399,38 +489,46 @@ th {
  }
  
  .green-task-button {
-  background-color: #4CAF50; 
+  background-color: #414385; 
   color: white; 
   padding: 10px 20px; 
   text-decoration: none; 
   display: inline-block; 
   border-radius: 5px; 
+  margin-top: 30px;
 }
 
 /* Hover effect for the delete button */
 .green-task-button:hover {
-  background-color: #57d757;
+  background-color: #5a5dcb;
 }
 
 
 .blue-show-button, .blue-edit-button {
-  background-color: #3498db; 
-  color: white; 
-  padding: 5px 10px; 
-  text-decoration: none; 
-  border-radius: 5px; 
-  margin-right: 10px; 
+  margin-top: 5px;
+  background-color: #507F91;
+  color: #fff;
+  padding: 10px 24px;
+  cursor: pointer;
+  border: 1px solid #507F91;
+  border-radius: 20px; /* Add rounded corners */
+  text-transform: uppercase; /* Make text uppercase */
+  font-weight: bold;
+  text-decoration: none;
+  display:block;
 }
 .blue-edit-button:hover {
-  background-color: #5aa6e4; 
+  background-color: #5aa6e4;
+  border: 1px solid #5aa6e4;
 }
 
 .blue-show-button:hover {
   background-color: #5aa6e4; 
+  border: 1px solid #5aa6e4;
 }
 
 .heading {
-  font-family: 'Roboto', cursive;
+  font-family: 'Arial', cursive;
   font-size: 2rem;
   opacity: 0; 
   animation: text-animation 2s ease-in-out forwards; 
@@ -446,3 +544,6 @@ th {
     transform: scale(1.2);
   }
 }
+
+
+
