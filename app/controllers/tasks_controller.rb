@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   #----------------------------------------------------------------------------- 
   
     @search = DuedateSearch.new(params[:search])
-    @duedate = @search.scope
+    @tasks = @search.scope
     #query by due date ^
     
   end
@@ -94,6 +94,7 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :description, :category, :duedate, :completed)
   end
+
 
 
 
